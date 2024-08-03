@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Audio Aleatorio</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url(https://rockforeveryone.es/wp-content/uploads/2024/04/SUM41-OG.jpg); /* Color de fondo */
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        audio {
+            margin-top: 20px; /* Espacio entre el título y el reproductor */
+        }
+    </style>
+</head>
+<body>
+
+    <h1></h1>
+    
+    <!-- Etiqueta de audio -->
+    <audio id="miAudio" controls></audio>
+
+    <script>
+        // Array de rutas de archivos de audio
+        const audios = [
+            src="audio/Sum 41 - Waiting On A Twist Of Fate.mp3",
+            src="audio/Sum 41 - Landmines.mp3",
+            src="audio/Sum 41 - I Cant Wait.mp3",
+            scr=  'audio/Sum 41 - Dopamine.mp3',
+            src=  'audio/Sum 41 - Bad Mistake.mp3'
+            // Agrega más rutas de audio según sea necesario
+        ];
+
+        // Función para seleccionar un audio aleatorio y establecerlo en el reproductor
+        function seleccionarAudioAleatorio() {
+            const audio = document.getElementById('miAudio');
+            const audioAleatorio = audios[Math.floor(Math.random() * audios.length)];
+            audio.src = audioAleatorio;
+
+            // Reproducir el audio automáticamente (el usuario puede pausar o reproducir)
+            audio.play().catch(function(error) {
+                console.log('Error al intentar reproducir el audio:', error);
+            });
+        }
+
+        // Llamar a la función al cargar la página
+        window.addEventListener('load', seleccionarAudioAleatorio);
+    </script>
+
+</body>
+</html>
